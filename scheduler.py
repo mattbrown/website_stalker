@@ -18,8 +18,20 @@ class StalkScheduler():
         self.notifier = notifier
         self.stalker = stalker
 
+        self.scheduler = sched.scheduler(time.time, time.sleep)
+        self.time = self.cfg['seconds_between_stalks']
+
+    def schedule_stalk(self, in_n_seconds):
+        self.scheduler.enter(in_n_seconds, 0, self.do_stalk, ())
+
+    def do_stalk(self):
+        result = self.stalker.stalk()
+        print "Result of stalk: %s " % result
+        self.schedule_stalk(self.time)
+
     def start(self):
-        print "Scheduler cfg: %s" % self.cfg
+        self.schedule_stalk(0)
+        self.scheduler.run()
 
 
 def main():
