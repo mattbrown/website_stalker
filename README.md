@@ -1,5 +1,5 @@
-# website_stalker
-Watch a website to stalk its current status
+# Website Stalker
+Schedule watching a website and notify someone when something changes. You could probably use this for any number of things.
 
 To run:
 ``` python scheduler.py```
