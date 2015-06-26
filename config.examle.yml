@@ -1,0 +1,17 @@
+scheduler:
+  seconds_between_stalks: 600
+stalker:
+  name: disney_restaurant
+  webdriver: "/Users/mbrown/Downloads/chromedriver/chromedriver"
+  date: "[ date ]"
+  urls:
+    - "https://disneyworld.disney.go.com/dining/polynesian-resort/ohana/"
+    - "https://disneyworld.disney.go.com/dining/magic-kingdom/be-our-guest-restaurant/"
+    - "https://disneyworld.disney.go.com/dining/animal-kingdom-villas-kidani/sanaa/"
+notifier:
+  name: print
+#  name: twilio
+  account_sid: "[twilio_account_sid]"
+  auth_token: "[auth_token]"
+  to_num: "[to num]"
+  from_num: "[from num]"
