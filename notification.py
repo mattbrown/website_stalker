@@ -24,6 +24,7 @@ class TwilioNotifier():
         self.from_num = cfg['from_num']
 
     def notify(self, msg):
+        print "\t About to text message: %s" % msg
         self.client.messages.create(
             to=self.to_num,
             from_=self.from_num,

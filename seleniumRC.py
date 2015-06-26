@@ -25,18 +25,23 @@ class SeleniumRC():
         search_date.send_keys("09/19/2015")
 
         #Select time dropdown
-        time_dropdown = browser.find_element_by_xpath('//*[@id="searchTime-wrapper"]/div[1]')
+        time_box = browser.find_element_by_class_name('select-toggle')
+        time_box.click()
+        time_box.send_keys('D')
+        time_dropdown = browser.find_element_by_id('diningAvailabilityForm-searchTime-1')
+        time_dropdown.click()
 
 
         #Search
         search_button = self.get_element_with_wait(browser, 10, 'searchButton')
+        search_button.click()
         search_button.click()
 
         ###########Results
         #first check for no results
         no_results_element = None
         try:
-            no_results_element = self.get_element_with_wait(browser, 5, 'ctaNoAvailableTimesContainer', by=By.CLASS_NAME)
+            no_results_element = self.get_element_with_wait(browser, 10, 'ctaNoAvailableTimesContainer', by=By.CLASS_NAME)
         except TimeoutException:
             print "There are results!"
 
