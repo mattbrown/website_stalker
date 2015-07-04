@@ -79,6 +79,10 @@ class DisneyRestaurantsStalker():
         search_date = self.get_element_with_wait(self.browser, 10, 'diningAvailabilityForm-searchDate')
         self.browser.execute_script("document.getElementById('diningAvailabilityForm-searchDate').value = \"\"")
         search_date.send_keys(self.date)
+        search_date.send_keys(Keys.TAB)
+
+        #Hold up, wait a second for the date picker to clear. Javascript bullshit
+        time.sleep(1)
 
         #Select time dropdown
         time_box = self.browser.find_element_by_class_name('select-toggle')
