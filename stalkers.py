@@ -43,13 +43,12 @@ class DisneyRestaurantsStalker():
         self.date = self.cfg['date']
         self.browser = None
         self.old_times = {}
-        self.chromedriver = "/Users/mbrown/Downloads/chromedriver/chromedriver"
 
     def setup(self, url):
         if url not in self.old_times:
             self.old_times[url] = set()
-        os.environ["webdriver.chrome.driver"] = self.chromedriver
-        self.browser = webdriver.Chrome(self.chromedriver)
+        os.environ["webdriver.chrome.driver"] = self.web_driver
+        self.browser = webdriver.Chrome(self.web_driver)
         self.browser.get(url)
 
     def reset(self, url):
