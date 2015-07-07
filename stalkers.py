@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import os
 import unittest, time, re
+import traceback
 
 
 class SimpleStalker():
@@ -61,9 +62,15 @@ class DisneyRestaurantsStalker():
         for url in self.urls:
             print "Scanning %s" % url
             self.setup(url)
-            result = self.stalk_single_site(url)
-            if result is not None:
-                msgs.append(result)
+            result = None
+            try:
+                result = self.stalk_single_site(url)
+                if result is not None:
+                    msgs.append(result)
+            except Exception, err:
+                print "Uh oh, there was a problem"
+                print(traceback.format_exc())
+
             self.reset(url)
 
         if msgs:
@@ -75,6 +82,8 @@ class DisneyRestaurantsStalker():
         """
         Stalk should return a message if there is something to notify, otherwise it will return None
         """
+        #Hold up, wait a second for the date picker to clear. Javascript bullshit
+        time.sleep(1)
         ### Setup search
         search_date = self.get_element_with_wait(self.browser, 10, 'diningAvailabilityForm-searchDate')
         self.browser.execute_script("document.getElementById('diningAvailabilityForm-searchDate').value = \"\"")
