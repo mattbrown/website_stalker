@@ -54,7 +54,7 @@ class DisneyRestaurantsStalker():
 
     def reset(self, url):
         if self.browser is not None:
-            self.browser.close()
+            self.browser.quit()
         self.browser = None
 
     def stalk(self):
