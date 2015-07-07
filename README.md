@@ -15,3 +15,7 @@ notifier:
     name: print
     #Notifier specific config. Things like emails, credentials, etc go here.
 ```
+
+
+To load python virtualenv plugin (not neccisary for this but I want to document it somewhere) 
+```Import-Module virtualenvwrapper```

@@ -83,6 +83,7 @@ class DisneyRestaurantsStalker():
         Stalk should return a message if there is something to notify, otherwise it will return None
         """
         #Hold up, wait a second for the date picker to clear. Javascript bullshit
+        #TODO we can replace these waits with implicit waits. 
         time.sleep(1)
         ### Setup search
         search_date = self.get_element_with_wait(self.browser, 10, 'diningAvailabilityForm-searchDate')
