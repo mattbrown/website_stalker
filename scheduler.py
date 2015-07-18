@@ -27,6 +27,8 @@ class StalkScheduler():
     def do_stalk(self):
         result = self.stalker.stalk()
         print "Result of stalk: %s " % result
+        if result is not None:
+            self.notifier.notify(result)
         self.schedule_stalk(self.time)
 
     def start(self):
